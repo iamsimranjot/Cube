@@ -15,6 +15,7 @@
 		707F0E141E2D286C0098184D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 707F0E121E2D286C0098184D /* LaunchScreen.storyboard */; };
 		707F0E1F1E2D286C0098184D /* CubeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707F0E1E1E2D286C0098184D /* CubeTests.swift */; };
 		707F0E2A1E2D286C0098184D /* CubeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707F0E291E2D286C0098184D /* CubeUITests.swift */; };
+		707F0E381E2D2CC50098184D /* MovieDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707F0E371E2D2CC50098184D /* MovieDetails.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		707F0E251E2D286C0098184D /* CubeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CubeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		707F0E291E2D286C0098184D /* CubeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubeUITests.swift; sourceTree = "<group>"; };
 		707F0E2B1E2D286C0098184D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		707F0E371E2D2CC50098184D /* MovieDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieDetails.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,12 +102,11 @@
 			isa = PBXGroup;
 			children = (
 				707F0E071E2D286C0098184D /* AppDelegate.swift */,
-				707F0E091E2D286C0098184D /* SearchViewController.swift */,
-				707F0E0B1E2D286C0098184D /* Favourites.swift */,
-				707F0E0D1E2D286C0098184D /* Main.storyboard */,
-				707F0E101E2D286C0098184D /* Assets.xcassets */,
-				707F0E121E2D286C0098184D /* LaunchScreen.storyboard */,
-				707F0E151E2D286C0098184D /* Info.plist */,
+				707F0E391E2D30130098184D /* Model */,
+				707F0E3C1E2D30550098184D /* View */,
+				707F0E3D1E2D305B0098184D /* Controller */,
+				707F0E3E1E2D30610098184D /* Assets */,
+				707F0E3F1E2D306A0098184D /* Supporting Files */,
 			);
 			path = Cube;
 			sourceTree = "<group>";
@@ -126,6 +127,64 @@
 				707F0E2B1E2D286C0098184D /* Info.plist */,
 			);
 			path = CubeUITests;
+			sourceTree = "<group>";
+		};
+		707F0E391E2D30130098184D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				707F0E3A1E2D30360098184D /* Clients */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		707F0E3A1E2D30360098184D /* Clients */ = {
+			isa = PBXGroup;
+			children = (
+				707F0E3B1E2D303E0098184D /* OMDb */,
+			);
+			name = Clients;
+			sourceTree = "<group>";
+		};
+		707F0E3B1E2D303E0098184D /* OMDb */ = {
+			isa = PBXGroup;
+			children = (
+				707F0E371E2D2CC50098184D /* MovieDetails.swift */,
+			);
+			name = OMDb;
+			sourceTree = "<group>";
+		};
+		707F0E3C1E2D30550098184D /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		707F0E3D1E2D305B0098184D /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				707F0E091E2D286C0098184D /* SearchViewController.swift */,
+				707F0E0B1E2D286C0098184D /* Favourites.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		707F0E3E1E2D30610098184D /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				707F0E0D1E2D286C0098184D /* Main.storyboard */,
+				707F0E121E2D286C0098184D /* LaunchScreen.storyboard */,
+				707F0E101E2D286C0098184D /* Assets.xcassets */,
+			);
+			name = Assets;
+			sourceTree = "<group>";
+		};
+		707F0E3F1E2D306A0098184D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				707F0E151E2D286C0098184D /* Info.plist */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -265,6 +324,7 @@
 				707F0E0C1E2D286C0098184D /* Favourites.swift in Sources */,
 				707F0E081E2D286C0098184D /* AppDelegate.swift in Sources */,
 				707F0E0A1E2D286C0098184D /* SearchViewController.swift in Sources */,
+				707F0E381E2D2CC50098184D /* MovieDetails.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
