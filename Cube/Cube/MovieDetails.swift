@@ -17,7 +17,7 @@ struct MovieDetails {
     let ratings: String
     let posterUrl: String
     
-    //MARK: Initializer
+    //MARK: Initializers
     
     init(title: String, genre: String, releaseDate: String, plot: String, ratings: String, imageUrl: String) {
         self.title = title
@@ -27,6 +27,4 @@ struct MovieDetails {
         self.ratings = ratings
         self.posterUrl = imageUrl
     }
-    
 }
-
