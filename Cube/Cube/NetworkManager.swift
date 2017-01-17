@@ -106,7 +106,7 @@ class NetworkManager {
         completionHandlerForConvertData(parsedResult, nil)
     }
     
-    func getSearchResultsFor(_ searchString: String, requestMethod: HTTPMethod = .GET, requestHeaders: [String:String]? = nil, requestBody: [String:AnyObject]? = nil, responseHandler: @escaping (_ idArray: [String]?, _ error: String?, _ response: Bool?) -> Void) -> URLSessionDataTask? {
+    func getSearchResultsFor(_ searchString: String, requestMethod: HTTPMethod = .GET, requestHeaders: [String:String]? = nil, requestBody: [String:AnyObject]? = nil, responseHandler: @escaping (_ resultDic: [String : [String]]?, _ error: String?, _ response: Bool?) -> Void) -> URLSessionDataTask? {
         
         // Make URL
         let url = urlForRequest(parameters: [
@@ -136,12 +136,34 @@ class NetworkManager {
             } else {
                 // Unwrap result
                 if let search = result?[responseKeys.search] as? [[String : AnyObject]] {
-                    var idArray = [String]()
+                    var results = [String : [String]]()
+                    var movieArray = [String]()
+                    var seriesArray = [String]()
+                    var episodeArray = [String]()
+                    
                     for dic in search {
-                        let value = "\(dic[responseKeys.title] as! String) , \(dic[responseKeys.year] as! String)"
-                        idArray.append(value)
+                        if (dic[responseKeys.type] as! String == parameterValues.movie){
+                            let value = "\(dic[responseKeys.title] as! String) , \(dic[responseKeys.year] as! String)"
+                            movieArray.append(value)
+                        } else if (dic[responseKeys.type] as! String == parameterValues.series){
+                            let value = "\(dic[responseKeys.title] as! String) , \(dic[responseKeys.year] as! String)"
+                            seriesArray.append(value)
+                        } else {
+                            let value = "\(dic[responseKeys.title] as! String) , \(dic[responseKeys.year] as! String)"
+                            episodeArray.append(value)
+                        }
                     }
-                    responseHandler(idArray, nil, true)
+                    
+                    results[parameterValues.movie] = movieArray
+                    results[parameterValues.series] = seriesArray
+                    results[parameterValues.episode] = episodeArray
+                    
+                    
+//                    for dic in search {
+//                        let value = "\(dic[responseKeys.title] as! String) , \(dic[responseKeys.year] as! String)\n(\(dic[responseKeys.type] as! String))"
+//                        idArray.append(value)
+//                    }
+                    responseHandler(results, nil, true)
                     return
                 } else {
                     responseHandler(nil, nil, false)
@@ -149,54 +171,6 @@ class NetworkManager {
                 }
             }
         }
-        
-//        // Create Data Task
-//        let task = session.dataTask(with: request){ (data, response, error) in
-//            
-//            // Check for errors
-//            if let error = error {
-//                responseHandler(nil, error.localizedDescription, nil)
-//                return
-//            }
-//            
-//            // Check for successful response via status codes
-//            if let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode < 200 && statusCode > 299 {
-//                responseHandler(nil, Errors.unsuccessfulStatusCode, nil)
-//                return
-//            }
-//            
-//            // Check weather the data returned is not nil
-//            guard let data = data else {
-//                responseHandler(nil, Errors.noDataReturned, nil)
-//                return
-//            }
-//            
-//            // Parse the data
-//            let parsedResult: [String:AnyObject]!
-//            do {
-//                parsedResult = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [String:AnyObject]
-//            } catch {
-//                print("Could not parse the data as JSON: '\(data)'")
-//                responseHandler(nil, Errors.unableToParseData, nil)
-//                return
-//            }
-//            
-//            // Unwrap result
-//            if let search = parsedResult[responseKeys.search] as? [[String : AnyObject]] {
-//                var idArray = [String]()
-//                for dic in search {
-//                    idArray.append(dic[responseKeys.imdbID] as! String)
-//                }
-//                responseHandler(idArray, nil, true)
-//                return
-//            } else {
-//                responseHandler(nil, nil, false)
-//                return
-//            }
-//            return
-//        }
-//        
-//        task.resume()
         return task
     }
     

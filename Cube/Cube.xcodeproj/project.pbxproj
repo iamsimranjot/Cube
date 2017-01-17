@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		707F0E081E2D286C0098184D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707F0E071E2D286C0098184D /* AppDelegate.swift */; };
-		707F0E0C1E2D286C0098184D /* FavouritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707F0E0B1E2D286C0098184D /* FavouritesViewController.swift */; };
 		707F0E0F1E2D286C0098184D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 707F0E0D1E2D286C0098184D /* Main.storyboard */; };
 		707F0E111E2D286C0098184D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 707F0E101E2D286C0098184D /* Assets.xcassets */; };
 		707F0E141E2D286C0098184D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 707F0E121E2D286C0098184D /* LaunchScreen.storyboard */; };
@@ -41,7 +40,6 @@
 /* Begin PBXFileReference section */
 		707F0E041E2D286C0098184D /* Cube.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cube.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		707F0E071E2D286C0098184D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		707F0E0B1E2D286C0098184D /* FavouritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesViewController.swift; sourceTree = "<group>"; };
 		707F0E0E1E2D286C0098184D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		707F0E101E2D286C0098184D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		707F0E131E2D286C0098184D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -172,7 +170,6 @@
 		707F0E3D1E2D305B0098184D /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				707F0E0B1E2D286C0098184D /* FavouritesViewController.swift */,
 				707F0E461E2D5C760098184D /* SearchViewController.swift */,
 			);
 			name = Controller;
@@ -332,7 +329,6 @@
 			files = (
 				707F0E431E2D358D0098184D /* NetworkManager.swift in Sources */,
 				707F0E471E2D5C760098184D /* SearchViewController.swift in Sources */,
-				707F0E0C1E2D286C0098184D /* FavouritesViewController.swift in Sources */,
 				707F0E491E2E0D150098184D /* MoviesModel.swift in Sources */,
 				707F0E081E2D286C0098184D /* AppDelegate.swift in Sources */,
 				707F0E411E2D31340098184D /* DataSource.swift in Sources */,
