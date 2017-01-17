@@ -21,6 +21,7 @@
 		707F0E4C1E2E2D690098184D /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707F0E4B1E2E2D680098184D /* AppConstants.swift */; };
 		707F0E4E1E2E37430098184D /* MovieDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707F0E4D1E2E37430098184D /* MovieDetailsViewController.swift */; };
 		707F0E501E2EB5420098184D /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707F0E4F1E2EB5420098184D /* UIColorExtension.swift */; };
+		707F0E531E2ED86C0098184D /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707F0E521E2ED86C0098184D /* SearchTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		707F0E4B1E2E2D680098184D /* AppConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		707F0E4D1E2E37430098184D /* MovieDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieDetailsViewController.swift; sourceTree = "<group>"; };
 		707F0E4F1E2EB5420098184D /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		707F0E521E2ED86C0098184D /* SearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,7 +113,6 @@
 		707F0E061E2D286C0098184D /* Cube */ = {
 			isa = PBXGroup;
 			children = (
-				707F0E4F1E2EB5420098184D /* UIColorExtension.swift */,
 				707F0E071E2D286C0098184D /* AppDelegate.swift */,
 				707F0E4B1E2E2D680098184D /* AppConstants.swift */,
 				707F0E391E2D30130098184D /* Model */,
@@ -171,6 +172,7 @@
 		707F0E3C1E2D30550098184D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				707F0E521E2ED86C0098184D /* SearchTableViewCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -206,8 +208,17 @@
 			isa = PBXGroup;
 			children = (
 				707F0E421E2D358D0098184D /* NetworkManager.swift */,
+				707F0E511E2ED83E0098184D /* Extensions */,
 			);
 			name = "Network Manager";
+			sourceTree = "<group>";
+		};
+		707F0E511E2ED83E0098184D /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				707F0E4F1E2EB5420098184D /* UIColorExtension.swift */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -353,6 +364,7 @@
 				707F0E4C1E2E2D690098184D /* AppConstants.swift in Sources */,
 				707F0E411E2D31340098184D /* DataSource.swift in Sources */,
 				707F0E381E2D2CC50098184D /* MovieDetails.swift in Sources */,
+				707F0E531E2ED86C0098184D /* SearchTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

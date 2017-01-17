@@ -134,32 +134,30 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let CellReuseId = AppConstants.Identifiers.searchMovieCellIdentifier
-        let cell = tableView.dequeueReusableCell(withIdentifier: CellReuseId) as UITableViewCell!
-        cell?.contentView.backgroundColor = UIColor(hex:0x83d0c9)
-        cell?.textLabel?.backgroundColor = UIColor(hex:0x83d0c9)
-        cell?.backgroundColor = UIColor(hex: 0x83d0c9)
+        let cell = tableView.dequeueReusableCell(withIdentifier: CellReuseId) as! SearchTableViewCell
+        cell.backgroundColor = UIColor(hex: 0x83d0c9)
         
         if indexPath.section == 0 {
             if moviesArray.count != 0 {
-                cell?.textLabel?.text = moviesArray[indexPath.row]
+                cell.configureCell(title: moviesArray[indexPath.row])
             } else {
-                cell?.textLabel?.text = AppConstants.defaultCellValues.noMovies
+                cell.configureCell(title: AppConstants.defaultCellValues.noMovies)
             }
         } else if indexPath.section == 1 {
             if seriesArray.count != 0 {
-                cell?.textLabel?.text = seriesArray[indexPath.row]
+                cell.configureCell(title: seriesArray[indexPath.row])
             } else {
-                cell?.textLabel?.text = AppConstants.defaultCellValues.noSeries
+                cell.configureCell(title: AppConstants.defaultCellValues.noSeries)
             }
         } else {
             if episodeArray.count != 0 {
-                cell?.textLabel?.text = episodeArray[indexPath.row]
+                cell.configureCell(title: episodeArray[indexPath.row])
             } else {
-                cell?.textLabel?.text = AppConstants.defaultCellValues.noEpisodes
+                cell.configureCell(title: AppConstants.defaultCellValues.noEpisodes)
             }
         }
         
-        return cell!
+        return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
