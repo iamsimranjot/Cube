@@ -17,8 +17,8 @@
 		707F0E381E2D2CC50098184D /* MovieDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707F0E371E2D2CC50098184D /* MovieDetails.swift */; };
 		707F0E411E2D31340098184D /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707F0E401E2D31340098184D /* DataSource.swift */; };
 		707F0E431E2D358D0098184D /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707F0E421E2D358D0098184D /* NetworkManager.swift */; };
-		707F0E451E2D47CE0098184D /* MoviesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707F0E441E2D47CE0098184D /* MoviesModel.swift */; };
 		707F0E471E2D5C760098184D /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707F0E461E2D5C760098184D /* SearchViewController.swift */; };
+		707F0E491E2E0D150098184D /* MoviesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707F0E481E2E0D150098184D /* MoviesModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,8 +55,8 @@
 		707F0E371E2D2CC50098184D /* MovieDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieDetails.swift; sourceTree = "<group>"; };
 		707F0E401E2D31340098184D /* DataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
 		707F0E421E2D358D0098184D /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
-		707F0E441E2D47CE0098184D /* MoviesModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoviesModel.swift; sourceTree = "<group>"; };
 		707F0E461E2D5C760098184D /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		707F0E481E2E0D150098184D /* MoviesModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoviesModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,7 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				707F0E401E2D31340098184D /* DataSource.swift */,
-				707F0E441E2D47CE0098184D /* MoviesModel.swift */,
+				707F0E481E2E0D150098184D /* MoviesModel.swift */,
 				707F0E371E2D2CC50098184D /* MovieDetails.swift */,
 			);
 			name = OMDb;
@@ -333,9 +333,9 @@
 				707F0E431E2D358D0098184D /* NetworkManager.swift in Sources */,
 				707F0E471E2D5C760098184D /* SearchViewController.swift in Sources */,
 				707F0E0C1E2D286C0098184D /* FavouritesViewController.swift in Sources */,
+				707F0E491E2E0D150098184D /* MoviesModel.swift in Sources */,
 				707F0E081E2D286C0098184D /* AppDelegate.swift in Sources */,
 				707F0E411E2D31340098184D /* DataSource.swift in Sources */,
-				707F0E451E2D47CE0098184D /* MoviesModel.swift in Sources */,
 				707F0E381E2D2CC50098184D /* MovieDetails.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -581,6 +581,7 @@
 				707F0E301E2D286C0098184D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		707F0E311E2D286C0098184D /* Build configuration list for PBXNativeTarget "CubeTests" */ = {
 			isa = XCConfigurationList;
@@ -589,6 +590,7 @@
 				707F0E331E2D286C0098184D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		707F0E341E2D286C0098184D /* Build configuration list for PBXNativeTarget "CubeUITests" */ = {
 			isa = XCConfigurationList;
@@ -597,6 +599,7 @@
 				707F0E361E2D286C0098184D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
