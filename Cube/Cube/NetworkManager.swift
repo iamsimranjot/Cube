@@ -54,7 +54,59 @@ class NetworkManager {
     
     //MARK: Data Task Methods
     
-    func getSearchResultsFor(_ searchString: String, requestMethod: HTTPMethod = .GET, requestHeaders: [String:String]? = nil, requestBody: [String:AnyObject]? = nil, responseHandler: @escaping (_ idArray: [String]?, _ error: String?, _ response: Bool?) -> Void) {
+    func taskForMethod(request: URLRequest, completionHandler: @escaping (_ result: AnyObject?, _ error: String?) -> Void) -> URLSessionDataTask {
+        
+        // Make the request
+        let task = session.dataTask(with: request) { (data, response, error) in
+            
+            func sendError(_ error: String) {
+                print(error)
+                completionHandler(nil, error.description)
+            }
+            
+            /* GUARD: Was there an error? */
+            guard (error == nil) else {
+                sendError("There was an error with your request: \(error)")
+                return
+            }
+            
+            /* GUARD: Did we get a successful 2XX response? */
+            guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 200 && statusCode <= 299 else {
+                sendError("Your request returned a status code other than 2xx!")
+                return
+            }
+            
+            /* GUARD: Was there any data returned? */
+            guard let data = data else {
+                sendError("No data was returned by the request!")
+                return
+            }
+            
+            /* 5/6. Parse the data and use the data (happens in completion handler) */
+            self.convertDataWithCompletionHandler(data, completionHandlerForConvertData: completionHandler)
+        }
+        
+        // Start the request
+        task.resume()
+        
+        return task
+    }
+    
+    // given raw JSON, return a usable Foundation object
+    private func convertDataWithCompletionHandler(_ data: Data, completionHandlerForConvertData: (_ result: AnyObject?, _ error: String?) -> Void) {
+        
+        var parsedResult: AnyObject! = nil
+        do {
+            parsedResult = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as AnyObject
+        } catch {
+            
+            completionHandlerForConvertData(nil, "Could not parse the data as JSON: '\(data)'")
+        }
+        
+        completionHandlerForConvertData(parsedResult, nil)
+    }
+    
+    func getSearchResultsFor(_ searchString: String, requestMethod: HTTPMethod = .GET, requestHeaders: [String:String]? = nil, requestBody: [String:AnyObject]? = nil, responseHandler: @escaping (_ idArray: [String]?, _ error: String?, _ response: Bool?) -> Void) -> URLSessionDataTask? {
         
         // Make URL
         let url = urlForRequest(parameters: [
@@ -76,55 +128,79 @@ class NetworkManager {
             request.httpBody = try! JSONSerialization.data(withJSONObject: requestBody, options: JSONSerialization.WritingOptions())
         }
         
-        // Create Data Task
-        let task = session.dataTask(with: request){ (data, response, error) in
+        // Make the request
+        let task = taskForMethod(request: request){ (result, error) in
             
-            // Check for errors
             if let error = error {
-                responseHandler(nil, error.localizedDescription, nil)
-                return
-            }
-            
-            // Check for successful response via status codes
-            if let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode < 200 && statusCode > 299 {
-                responseHandler(nil, Errors.unsuccessfulStatusCode, nil)
-                return
-            }
-            
-            // Check weather the data returned is not nil
-            guard let data = data else {
-                responseHandler(nil, Errors.noDataReturned, nil)
-                return
-            }
-            
-            // Parse the data
-            let parsedResult: [String:AnyObject]!
-            do {
-                parsedResult = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [String:AnyObject]
-            } catch {
-                print("Could not parse the data as JSON: '\(data)'")
-                responseHandler(nil, Errors.unableToParseData, nil)
-                return
-            }
-            
-            // Unwrap result
-            if let search = parsedResult[responseKeys.search] as? [[String : AnyObject]] {
-                var idArray = [String]()
-                for dic in search {
-                    idArray.append(dic[responseKeys.imdbID] as! String)
-                }
-                responseHandler(idArray, nil, true)
-                return
+                responseHandler(nil, error, nil)
             } else {
-                responseHandler(nil, nil, false)
-                return
+                // Unwrap result
+                if let search = result?[responseKeys.search] as? [[String : AnyObject]] {
+                    var idArray = [String]()
+                    for dic in search {
+                        let value = "\(dic[responseKeys.title] as! String) , \(dic[responseKeys.year] as! String)"
+                        idArray.append(value)
+                    }
+                    responseHandler(idArray, nil, true)
+                    return
+                } else {
+                    responseHandler(nil, nil, false)
+                    return
+                }
             }
         }
         
-        task.resume()
+//        // Create Data Task
+//        let task = session.dataTask(with: request){ (data, response, error) in
+//            
+//            // Check for errors
+//            if let error = error {
+//                responseHandler(nil, error.localizedDescription, nil)
+//                return
+//            }
+//            
+//            // Check for successful response via status codes
+//            if let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode < 200 && statusCode > 299 {
+//                responseHandler(nil, Errors.unsuccessfulStatusCode, nil)
+//                return
+//            }
+//            
+//            // Check weather the data returned is not nil
+//            guard let data = data else {
+//                responseHandler(nil, Errors.noDataReturned, nil)
+//                return
+//            }
+//            
+//            // Parse the data
+//            let parsedResult: [String:AnyObject]!
+//            do {
+//                parsedResult = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [String:AnyObject]
+//            } catch {
+//                print("Could not parse the data as JSON: '\(data)'")
+//                responseHandler(nil, Errors.unableToParseData, nil)
+//                return
+//            }
+//            
+//            // Unwrap result
+//            if let search = parsedResult[responseKeys.search] as? [[String : AnyObject]] {
+//                var idArray = [String]()
+//                for dic in search {
+//                    idArray.append(dic[responseKeys.imdbID] as! String)
+//                }
+//                responseHandler(idArray, nil, true)
+//                return
+//            } else {
+//                responseHandler(nil, nil, false)
+//                return
+//            }
+//            return
+//        }
+//        
+//        task.resume()
+        return task
     }
     
-    func getMovieDetailsForID(_ imdbID: String, requestMethod: HTTPMethod = .GET, requestHeaders: [String:String]? = nil, requestBody: [String:AnyObject]? = nil, responseHandler: @escaping (_ movieDetails: moviesModel?, _ success: Bool) -> Void) {
+    func getMovieDetailsForID(_ imdbID: String, requestMethod: HTTPMethod = .GET, requestHeaders: [String:String]? = nil, requestBody: [String:AnyObject]? = nil, responseHandler: @escaping (_ movieDetails: MoviesModel?, _ success: Bool) -> Void) {
         
         // Make URL
         let url = urlForRequest(parameters: [
@@ -177,7 +253,7 @@ class NetworkManager {
                 return
             }
             
-            responseHandler(moviesModel.detailsFromDictionary(dictionary: parsedResult), true)
+            responseHandler(MoviesModel.detailsFromDictionary(dictionary: parsedResult), true)
         }
         task.resume()
     }
@@ -225,6 +301,8 @@ extension NetworkManager {
         static let plot = "Plot"
         static let posterUrl = "Poster"
         static let response = "Response"
+        static let year = "Year"
+        static let type = "Type"
         static let error = "Error"
     }
     
@@ -234,6 +312,12 @@ extension NetworkManager {
         static let search = "s"
         static let id = "i"
         static let type = "type"
+    }
+    
+    struct parameterValues {
+        static let movie = "movie"
+        static let series = "series"
+        static let episode = "episode"
     }
     
     //MARK: Error Messages Constants

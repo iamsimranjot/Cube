@@ -1,12 +1,12 @@
 //
-//  moviesModel.swift
+//  MoviesModel.swift
 //  Cube
 //
 //  Created by SimranJot Singh on 16/01/17.
 //  Copyright © 2017 SimranJot Singh. All rights reserved.
 //
 
-struct moviesModel {
+struct MoviesModel {
     
     //MARK: Properties
     
@@ -27,8 +27,8 @@ struct moviesModel {
     }
     
     // Helper Methods
-    static func detailsFromDictionary(dictionary: [String: AnyObject]) -> moviesModel {
-        return moviesModel(dictionary: dictionary)
+    static func detailsFromDictionary(dictionary: [String: AnyObject]) -> MoviesModel {
+        return MoviesModel(dictionary: dictionary)
     }
 }
 

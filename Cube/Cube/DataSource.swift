@@ -12,7 +12,7 @@ class DataSource: NSObject {
     
     //MARK: Properties
     var movieID = [String]()
-    var movieDetailsDic = [MovieDetails]()
+    var movieDetailsDic = [MoviesModel]()
     
     //MARK: Singleton Instance
     private static let sharedManager = DataSource()
