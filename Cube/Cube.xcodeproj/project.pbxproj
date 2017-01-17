@@ -120,6 +120,7 @@
 				707F0E3D1E2D305B0098184D /* Controller */,
 				707F0E3E1E2D30610098184D /* Assets */,
 				707F0E4A1E2E2CDE0098184D /* Network Manager */,
+				707F0E511E2ED83E0098184D /* Extensions */,
 				707F0E3F1E2D306A0098184D /* Supporting Files */,
 			);
 			path = Cube;
@@ -208,7 +209,6 @@
 			isa = PBXGroup;
 			children = (
 				707F0E421E2D358D0098184D /* NetworkManager.swift */,
-				707F0E511E2ED83E0098184D /* Extensions */,
 			);
 			name = "Network Manager";
 			sourceTree = "<group>";
