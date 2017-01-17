@@ -41,6 +41,7 @@ class SearchViewController: UIViewController {
         // Configure Table View for automatic height according to the content dynamically
         moviesTableView.estimatedRowHeight = 50
         moviesTableView.rowHeight = UITableViewAutomaticDimension
+        
     }
     
     //MARK: Helper Methods
@@ -50,10 +51,19 @@ class SearchViewController: UIViewController {
         case .NoContent:
             moviesTableView.isHidden = true
             emptyView.isHidden = false
+            emptyView.backgroundColor = UIColor(hex: 0x65c3ba)
         case .WithContent:
             emptyView.isHidden = true
             moviesTableView.isHidden = false
+            moviesTableView.backgroundColor = UIColor(hex: 0x83d0c9)
         }
+        
+        idleView.backgroundColor = UIColor(hex: 0x65c3ba)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let desitination = segue.destination as! MovieDetailsViewController
+        desitination.movieTitle = sender as? String
     }
 }
 
@@ -86,7 +96,6 @@ extension SearchViewController: UISearchBarDelegate {
                 self.moviesArray = movies["movie"]!
                 self.seriesArray = movies["series"]!
                 self.episodeArray = movies["episode"]!
-                
 
                 DispatchQueue.main.async {
                     UIView.animate(withDuration: 0.5, animations: {
@@ -126,6 +135,9 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         
         let CellReuseId = AppConstants.Identifiers.searchMovieCellIdentifier
         let cell = tableView.dequeueReusableCell(withIdentifier: CellReuseId) as UITableViewCell!
+        cell?.contentView.backgroundColor = UIColor(hex:0x83d0c9)
+        cell?.textLabel?.backgroundColor = UIColor(hex:0x83d0c9)
+        cell?.backgroundColor = UIColor(hex: 0x83d0c9)
         
         if indexPath.section == 0 {
             if moviesArray.count != 0 {
@@ -151,6 +163,8 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        // return the number of rows for each section with fetched data
         if section == 0 {
             return moviesArray.count != 0 ? moviesArray.count : 1
         } else if section == 1 {
@@ -161,7 +175,30 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: AppConstants.Identifiers.movieDetailsSegueIdentifier, sender: nil)
+        
+        // Show Details Screen when the respected row is selected.
+        // Check for the placeholder cells
+        
+        let senderObject: String?
+        if indexPath.section == 0 && moviesArray.count != 0 {
+            senderObject = moviesArray[indexPath.row]
+        } else if indexPath.section == 1 && seriesArray.count != 0 {
+            senderObject = seriesArray[indexPath.row]
+        } else {
+            if episodeArray.count != 0 {
+                senderObject = episodeArray[indexPath.row]
+            } else {
+                senderObject = nil
+            }
+        }
+        
+        // Deselects the cell afterwards
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        // Check if it has a sender & perform show segue
+        if let senderObject = senderObject {
+            performSegue(withIdentifier: AppConstants.Identifiers.movieDetailsSegueIdentifier, sender: senderObject)
+        }
     }
 }
 

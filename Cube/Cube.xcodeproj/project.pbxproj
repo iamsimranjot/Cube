@@ -20,6 +20,7 @@
 		707F0E491E2E0D150098184D /* MoviesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707F0E481E2E0D150098184D /* MoviesModel.swift */; };
 		707F0E4C1E2E2D690098184D /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707F0E4B1E2E2D680098184D /* AppConstants.swift */; };
 		707F0E4E1E2E37430098184D /* MovieDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707F0E4D1E2E37430098184D /* MovieDetailsViewController.swift */; };
+		707F0E501E2EB5420098184D /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707F0E4F1E2EB5420098184D /* UIColorExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		707F0E481E2E0D150098184D /* MoviesModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoviesModel.swift; sourceTree = "<group>"; };
 		707F0E4B1E2E2D680098184D /* AppConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		707F0E4D1E2E37430098184D /* MovieDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieDetailsViewController.swift; sourceTree = "<group>"; };
+		707F0E4F1E2EB5420098184D /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 		707F0E061E2D286C0098184D /* Cube */ = {
 			isa = PBXGroup;
 			children = (
+				707F0E4F1E2EB5420098184D /* UIColorExtension.swift */,
 				707F0E071E2D286C0098184D /* AppDelegate.swift */,
 				707F0E4B1E2E2D680098184D /* AppConstants.swift */,
 				707F0E391E2D30130098184D /* Model */,
@@ -346,6 +349,7 @@
 				707F0E471E2D5C760098184D /* SearchViewController.swift in Sources */,
 				707F0E491E2E0D150098184D /* MoviesModel.swift in Sources */,
 				707F0E081E2D286C0098184D /* AppDelegate.swift in Sources */,
+				707F0E501E2EB5420098184D /* UIColorExtension.swift in Sources */,
 				707F0E4C1E2E2D690098184D /* AppConstants.swift in Sources */,
 				707F0E411E2D31340098184D /* DataSource.swift in Sources */,
 				707F0E381E2D2CC50098184D /* MovieDetails.swift in Sources */,

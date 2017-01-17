@@ -91,13 +91,13 @@ class NetworkManager {
                     
                     for dic in search {
                         if (dic[responseKeys.type] as! String == parameterValues.movie){
-                            let value = "\(dic[responseKeys.title] as! String) , \(dic[responseKeys.year] as! String)"
+                            let value = "\(dic[responseKeys.title] as! String)"
                             movieArray.append(value)
                         } else if (dic[responseKeys.type] as! String == parameterValues.series){
-                            let value = "\(dic[responseKeys.title] as! String) , \(dic[responseKeys.year] as! String)"
+                            let value = "\(dic[responseKeys.title] as! String)"
                             seriesArray.append(value)
                         } else {
-                            let value = "\(dic[responseKeys.title] as! String) , \(dic[responseKeys.year] as! String)"
+                            let value = "\(dic[responseKeys.title] as! String)"
                             episodeArray.append(value)
                         }
                     }
@@ -117,11 +117,11 @@ class NetworkManager {
         return task
     }
     
-    func getMovieDetailsForID(_ imdbID: String, requestMethod: HTTPMethod = .GET, requestHeaders: [String:String]? = nil, requestBody: [String:AnyObject]? = nil, responseHandler: @escaping (_ movieDetails: MoviesModel?, _ success: Bool) -> Void) {
+    func getMovieDetailsForTitle(_ title: String, requestMethod: HTTPMethod = .GET, requestHeaders: [String:String]? = nil, requestBody: [String:AnyObject]? = nil, responseHandler: @escaping (_ movieDetails: MoviesModel?, _ success: Bool) -> Void) {
         
         // Make URL
         let url = urlForRequest(parameters: [
-            parameterKeys.id: imdbID as AnyObject])
+            parameterKeys.title: title as AnyObject])
         
         // Create request from URL
         var request = URLRequest(url: url)
@@ -279,7 +279,7 @@ extension NetworkManager {
     
     struct parameterKeys {
         static let search = "s"
-        static let id = "i"
+        static let title = "t"
         static let type = "type"
     }
     
