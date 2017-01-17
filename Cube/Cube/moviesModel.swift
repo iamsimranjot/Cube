@@ -11,7 +11,6 @@ struct MoviesModel {
     //MARK: Properties
     
     let movieDetails: MovieDetails
-    //let searchIDs: [String]
     
     //MARK: Initializer
     
@@ -19,11 +18,12 @@ struct MoviesModel {
         let title = dictionary[NetworkManager.responseKeys.title] as? String ?? ""
         let genre = dictionary[NetworkManager.responseKeys.genre] as? String ?? ""
         let releaseDate = dictionary[NetworkManager.responseKeys.releaseDate] as? String ?? ""
+        let imdbid = dictionary[NetworkManager.responseKeys.imdbID] as? String ?? ""
         let plot = dictionary[NetworkManager.responseKeys.plot] as? String ?? ""
         let ratings = dictionary[NetworkManager.responseKeys.ratings] as? String ?? ""
         let posterUrl = dictionary[NetworkManager.responseKeys.posterUrl] as? String ?? ""
         
-        movieDetails = MovieDetails(title: title, genre: genre, releaseDate: releaseDate, plot: plot, ratings: ratings, imageUrl: posterUrl)
+        movieDetails = MovieDetails(title: title, genre: genre, releaseDate: releaseDate, imdbId: imdbid, plot: plot, ratings: ratings, imageUrl: posterUrl)
     }
     
     // Helper Methods

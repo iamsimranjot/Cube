@@ -11,6 +11,7 @@ struct AppConstants {
     //Identifiers
     struct Identifiers {
         static let searchMovieCellIdentifier = "MovieSearchCell"
+        static let movieDetailsSegueIdentifier = "ShowMovieDetails"
     }
     
     // Section Titles

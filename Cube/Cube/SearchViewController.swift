@@ -159,5 +159,9 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
             return episodeArray.count != 0 ? episodeArray.count : 1
         }
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: AppConstants.Identifiers.movieDetailsSegueIdentifier, sender: nil)
+    }
 }
 

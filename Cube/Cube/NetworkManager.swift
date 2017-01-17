@@ -54,58 +54,6 @@ class NetworkManager {
     
     //MARK: Data Task Methods
     
-    func taskForMethod(request: URLRequest, completionHandler: @escaping (_ result: AnyObject?, _ error: String?) -> Void) -> URLSessionDataTask {
-        
-        // Make the request
-        let task = session.dataTask(with: request) { (data, response, error) in
-            
-            func sendError(_ error: String) {
-                print(error)
-                completionHandler(nil, error.description)
-            }
-            
-            /* GUARD: Was there an error? */
-            guard (error == nil) else {
-                sendError("There was an error with your request: \(error)")
-                return
-            }
-            
-            /* GUARD: Did we get a successful 2XX response? */
-            guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 200 && statusCode <= 299 else {
-                sendError("Your request returned a status code other than 2xx!")
-                return
-            }
-            
-            /* GUARD: Was there any data returned? */
-            guard let data = data else {
-                sendError("No data was returned by the request!")
-                return
-            }
-            
-            /* 5/6. Parse the data and use the data (happens in completion handler) */
-            self.convertDataWithCompletionHandler(data, completionHandlerForConvertData: completionHandler)
-        }
-        
-        // Start the request
-        task.resume()
-        
-        return task
-    }
-    
-    // given raw JSON, return a usable Foundation object
-    private func convertDataWithCompletionHandler(_ data: Data, completionHandlerForConvertData: (_ result: AnyObject?, _ error: String?) -> Void) {
-        
-        var parsedResult: AnyObject! = nil
-        do {
-            parsedResult = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as AnyObject
-        } catch {
-            
-            completionHandlerForConvertData(nil, "Could not parse the data as JSON: '\(data)'")
-        }
-        
-        completionHandlerForConvertData(parsedResult, nil)
-    }
-    
     func getSearchResultsFor(_ searchString: String, requestMethod: HTTPMethod = .GET, requestHeaders: [String:String]? = nil, requestBody: [String:AnyObject]? = nil, responseHandler: @escaping (_ resultDic: [String : [String]]?, _ error: String?, _ response: Bool?) -> Void) -> URLSessionDataTask? {
         
         // Make URL
@@ -206,7 +154,7 @@ class NetworkManager {
                 return
             }
             
-            // Check weather the data returned is not nil
+            // GUARD: Check weather the data returned is not nil
             guard let data = data else {
                 responseHandler(nil, false)
                 return
@@ -225,6 +173,58 @@ class NetworkManager {
             responseHandler(MoviesModel.detailsFromDictionary(dictionary: parsedResult), true)
         }
         task.resume()
+    }
+    
+    private func taskForMethod(request: URLRequest, completionHandler: @escaping (_ result: AnyObject?, _ error: String?) -> Void) -> URLSessionDataTask {
+        
+        // Make the request
+        let task = session.dataTask(with: request) { (data, response, error) in
+            
+            func sendError(_ error: String) {
+                print(error)
+                completionHandler(nil, error.description)
+            }
+            
+            // GUARD: Was there an error?
+            guard (error == nil) else {
+                sendError("There was an error with your request: \(error)")
+                return
+            }
+            
+            // GUARD: Did we get a successful 2XX response?
+            guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 200 && statusCode <= 299 else {
+                sendError("Your request returned a status code other than 2xx!")
+                return
+            }
+            
+            // GUARD: Was there any data returned?
+            guard let data = data else {
+                sendError("No data was returned by the request!")
+                return
+            }
+            
+            // Parse the data and use the data (happens in completion handler)
+            self.convertDataWithCompletionHandler(data, completionHandlerForConvertData: completionHandler)
+        }
+        
+        // Start the request
+        task.resume()
+        
+        return task
+    }
+    
+    // given raw JSON, return a usable Foundation object
+    private func convertDataWithCompletionHandler(_ data: Data, completionHandlerForConvertData: (_ result: AnyObject?, _ error: String?) -> Void) {
+        
+        var parsedResult: AnyObject! = nil
+        do {
+            parsedResult = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as AnyObject
+        } catch {
+            
+            completionHandlerForConvertData(nil, "Could not parse the data as JSON: '\(data)'")
+        }
+        
+        completionHandlerForConvertData(parsedResult, nil)
     }
     
     //MARK: Build URL for request

@@ -19,6 +19,7 @@
 		707F0E471E2D5C760098184D /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707F0E461E2D5C760098184D /* SearchViewController.swift */; };
 		707F0E491E2E0D150098184D /* MoviesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707F0E481E2E0D150098184D /* MoviesModel.swift */; };
 		707F0E4C1E2E2D690098184D /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707F0E4B1E2E2D680098184D /* AppConstants.swift */; };
+		707F0E4E1E2E37430098184D /* MovieDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707F0E4D1E2E37430098184D /* MovieDetailsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		707F0E461E2D5C760098184D /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		707F0E481E2E0D150098184D /* MoviesModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoviesModel.swift; sourceTree = "<group>"; };
 		707F0E4B1E2E2D680098184D /* AppConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
+		707F0E4D1E2E37430098184D /* MovieDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieDetailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				707F0E461E2D5C760098184D /* SearchViewController.swift */,
+				707F0E4D1E2E37430098184D /* MovieDetailsViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -338,6 +341,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				707F0E4E1E2E37430098184D /* MovieDetailsViewController.swift in Sources */,
 				707F0E431E2D358D0098184D /* NetworkManager.swift in Sources */,
 				707F0E471E2D5C760098184D /* SearchViewController.swift in Sources */,
 				707F0E491E2E0D150098184D /* MoviesModel.swift in Sources */,
