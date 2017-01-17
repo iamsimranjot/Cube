@@ -18,6 +18,7 @@
 		707F0E431E2D358D0098184D /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707F0E421E2D358D0098184D /* NetworkManager.swift */; };
 		707F0E471E2D5C760098184D /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707F0E461E2D5C760098184D /* SearchViewController.swift */; };
 		707F0E491E2E0D150098184D /* MoviesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707F0E481E2E0D150098184D /* MoviesModel.swift */; };
+		707F0E4C1E2E2D690098184D /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707F0E4B1E2E2D680098184D /* AppConstants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		707F0E421E2D358D0098184D /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		707F0E461E2D5C760098184D /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		707F0E481E2E0D150098184D /* MoviesModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoviesModel.swift; sourceTree = "<group>"; };
+		707F0E4B1E2E2D680098184D /* AppConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,12 +108,13 @@
 			isa = PBXGroup;
 			children = (
 				707F0E071E2D286C0098184D /* AppDelegate.swift */,
+				707F0E4B1E2E2D680098184D /* AppConstants.swift */,
 				707F0E391E2D30130098184D /* Model */,
 				707F0E3C1E2D30550098184D /* View */,
 				707F0E3D1E2D305B0098184D /* Controller */,
 				707F0E3E1E2D30610098184D /* Assets */,
+				707F0E4A1E2E2CDE0098184D /* Network Manager */,
 				707F0E3F1E2D306A0098184D /* Supporting Files */,
-				707F0E421E2D358D0098184D /* NetworkManager.swift */,
 			);
 			path = Cube;
 			sourceTree = "<group>";
@@ -191,6 +194,14 @@
 				707F0E151E2D286C0098184D /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		707F0E4A1E2E2CDE0098184D /* Network Manager */ = {
+			isa = PBXGroup;
+			children = (
+				707F0E421E2D358D0098184D /* NetworkManager.swift */,
+			);
+			name = "Network Manager";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -331,6 +342,7 @@
 				707F0E471E2D5C760098184D /* SearchViewController.swift in Sources */,
 				707F0E491E2E0D150098184D /* MoviesModel.swift in Sources */,
 				707F0E081E2D286C0098184D /* AppDelegate.swift in Sources */,
+				707F0E4C1E2E2D690098184D /* AppConstants.swift in Sources */,
 				707F0E411E2D31340098184D /* DataSource.swift in Sources */,
 				707F0E381E2D2CC50098184D /* MovieDetails.swift in Sources */,
 			);

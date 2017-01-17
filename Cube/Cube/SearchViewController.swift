@@ -10,6 +10,8 @@ import UIKit
 
 class SearchViewController: UIViewController {
     
+    //MARK: UIConfiguration Enum
+    
     enum UIState { case NoContent, WithContent }
     
     //MARK: Outlets
@@ -36,7 +38,7 @@ class SearchViewController: UIViewController {
         // Set Initial View
         configureUIState(.NoContent)
         
-        // Configure Table View
+        // Configure Table View for automatic height according to the content dynamically
         moviesTableView.estimatedRowHeight = 50
         moviesTableView.rowHeight = UITableViewAutomaticDimension
     }
@@ -112,36 +114,36 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section == 0 {
-            return "Movies"
+            return AppConstants.HeaderTitles.movies
         } else if section == 1 {
-            return "Series"
+            return AppConstants.HeaderTitles.series
         } else {
-            return "Episodes"
+            return AppConstants.HeaderTitles.episodes
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let CellReuseId = "MovieSearchCell"
+        let CellReuseId = AppConstants.Identifiers.searchMovieCellIdentifier
         let cell = tableView.dequeueReusableCell(withIdentifier: CellReuseId) as UITableViewCell!
         
         if indexPath.section == 0 {
             if moviesArray.count != 0 {
                 cell?.textLabel?.text = moviesArray[indexPath.row]
             } else {
-                cell?.textLabel?.text = "No Movies Found"
+                cell?.textLabel?.text = AppConstants.defaultCellValues.noMovies
             }
         } else if indexPath.section == 1 {
             if seriesArray.count != 0 {
                 cell?.textLabel?.text = seriesArray[indexPath.row]
             } else {
-                cell?.textLabel?.text = "No Series Found"
+                cell?.textLabel?.text = AppConstants.defaultCellValues.noSeries
             }
         } else {
             if episodeArray.count != 0 {
                 cell?.textLabel?.text = episodeArray[indexPath.row]
             } else {
-                cell?.textLabel?.text = "No Episodes Found"
+                cell?.textLabel?.text = AppConstants.defaultCellValues.noEpisodes
             }
         }
         

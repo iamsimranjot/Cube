@@ -158,11 +158,6 @@ class NetworkManager {
                     results[parameterValues.series] = seriesArray
                     results[parameterValues.episode] = episodeArray
                     
-                    
-//                    for dic in search {
-//                        let value = "\(dic[responseKeys.title] as! String) , \(dic[responseKeys.year] as! String)\n(\(dic[responseKeys.type] as! String))"
-//                        idArray.append(value)
-//                    }
                     responseHandler(results, nil, true)
                     return
                 } else {
