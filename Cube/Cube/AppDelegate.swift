@@ -19,7 +19,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().tintColor = UIColor(hex: 0x009688)
         return true
     }
-
-
 }
 
